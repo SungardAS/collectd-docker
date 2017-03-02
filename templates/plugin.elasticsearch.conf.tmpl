@@ -1,0 +1,39 @@
+<LoadPlugin "python">
+    Globals true
+</LoadPlugin>
+
+<Plugin "python">
+    ModulePath "/opt/collectd-plugins"
+
+    Import "elasticsearch_collectd"
+
+    <Module "elasticsearch_collectd">
+        Verbose true
+{{- if getenv "ES_CLUSTER" }}
+        Cluster "{{getenv "ES_CLUSTER"}}"
+{{- else }}
+        Cluster "elasticsearch"
+{{- end }}  
+        Indexes ["_all"]
+        EnableIndexStats true
+        IndexStatsMasterOnly true
+        EnableClusterHealth true
+        Interval 10
+        IndexInterval 300
+        DetailedMetrics false
+        ThreadPools ["search","index", "generic", "get", "snapshot", "bulk", "warmer", "flush", "refresh", "merge", "optimize", "suggest", "percolate", "management", "listener", "fetch_shard_store", "fetch_shard_started", "force_merge"]
+        AdditionalMetrics [""]
+{{- if getenv "ES_HOST" }}
+        Host "{{getenv "ES_HOST"}}"
+{{- else }}
+        Host "localhost"
+{{- end }}
+{{- if getenv "ES_PORT" }}
+        Port "{{getenv "ES_PORT"}}"
+{{- else }}
+        Port "9200"
+{{- end }}
+    </Module>
+</Plugin>
+
+

@@ -1,0 +1,19 @@
+version: '2.1'
+
+services:
+  collectd:
+    image: sungardas/collectd-docker:latest
+    network_mode: "host"
+    privileged: true
+    volumes:
+      - /etc/hostname:/mnt/hostname:ro
+      - /proc:/mnt/proc:ro
+      - /:/hostfs:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /etc:/mnt/etc:ro
+    environment:
+      ES_CLUSTER: elasticsearch
+      PLUGINS: "cpu,df,disk,elasticsearch,memory,swap"
+    restart: on-failure
+    stop_grace_period: 10s
+

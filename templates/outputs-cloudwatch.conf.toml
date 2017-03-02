@@ -1,0 +1,6 @@
+[template]
+src = "outputs-cloudwatch.conf.tmpl"
+dest = "/etc/collectd/plugin-cfgs/outputs-cloudwatch.conf"
+keys = [
+]
+

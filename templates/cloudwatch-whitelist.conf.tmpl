@@ -1,0 +1,41 @@
+{{$plugins := split (getenv "PLUGINS") ","}}
+{{range $plugins}}
+{{if eq (.) "disk" }}
+disk-xvd.*
+{{end}}
+{{if eq (.) "memory" }}
+memory--memory-used
+memory--memory-buffered
+memory--memory-cached
+memory--memory-free
+{{end}}
+{{ if eq (.) "swap" }}
+swap--swap-used
+swap--swap-free
+swap--swap-cached
+{{end}}
+{{ if eq (.) "df" }}
+df-hostfs-data-df_complex-free
+df-hostfs-data-df_complex-reserved
+df-hostfs-data-df_complex-used
+df-hostfs-data-percent_bytes-free
+df-hostfs-data-percent_bytes-reserved
+df-hostfs-data-percent_bytes-used
+df-root-df_complex-free
+df-root-df_complex-used
+df-root-df_complex-reserved
+df-root-percent_bytes-reserved
+df-root-percent_bytes-free
+df-root-percent_bytes-used
+df-hostfs-df_complex-free
+df-hostfs-df_complex-reserved
+df-hostfs-df_complex-used
+{{end}}
+{{ if eq (.) "cpu" }}
+cpu-.*
+{{end}}
+{{ if eq (.) "elasticsearch" }}
+elasticsearch-.*
+{{end}}
+{{end}}
+

@@ -1,0 +1,6 @@
+[template]
+src = "plugin.memory.conf.tmpl"
+dest = "/etc/collectd/plugin-cfgs/memory.conf"
+keys = [
+]
+

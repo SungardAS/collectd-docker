@@ -1,0 +1,6 @@
+[template]
+src = "plugin.cpu.conf.tmpl"
+dest = "/etc/collectd/plugin-cfgs/cpu.conf"
+keys = [
+]
+

@@ -1,0 +1,6 @@
+[template]
+src = "plugin.disk.conf.tmpl"
+dest = "/etc/collectd/plugin-cfgs/disk.conf"
+keys = [
+]
+

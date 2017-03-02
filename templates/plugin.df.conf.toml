@@ -1,0 +1,6 @@
+[template]
+src = "plugin.df.conf.tmpl"
+dest = "/etc/collectd/plugin-cfgs/df.conf"
+keys = [
+]
+

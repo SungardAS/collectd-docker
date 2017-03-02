@@ -1,0 +1,6 @@
+[template]
+src = "cloudwatch-plugin.conf.tmpl"
+dest = "/opt/collectd-plugins/cloudwatch/config/plugin.conf"
+keys = [
+]
+

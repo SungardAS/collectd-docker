@@ -1,0 +1,9 @@
+[template]
+src = "plugin.elasticsearch.conf.tmpl"
+dest = "/etc/collectd/plugin-cfgs/elasticsearch.conf"
+keys = [
+    "ES_CLUSTER",
+    "ES_HOST",
+    "ES_PORT",
+]
+

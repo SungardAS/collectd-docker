@@ -1,0 +1,6 @@
+[template]
+src = "cloudwatch-whitelist.conf.tmpl"
+dest = "/opt/collectd-plugins/cloudwatch/config/whitelist.conf"
+keys = [
+]
+
