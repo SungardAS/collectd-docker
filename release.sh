@@ -40,7 +40,7 @@ echo "pushing to docker"
 docker push $USERNAME/$IMAGE:latest
 docker push $USERNAME/$IMAGE:$version-ubuntu16.04
 docker push $USERNAME/$IMAGE:$version-ubuntu14.04
-echo "finished pushing to docker
+echo "finished pushing to docker"
 
 echo "done"
 
