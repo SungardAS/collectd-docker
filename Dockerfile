@@ -41,7 +41,7 @@ RUN chmod +x /usr/local/bin/ec2-metadata \
     && chmod +x /usr/local/bin/confd \
     && mv /scripts/ec2-metadata-value /usr/local/bin/ec2-metadata-value \
     && mkdir /etc/collectd/plugin-cfgs \
-    && (echo "1"; echo "1"; echo "1"; echo "1"; cat) | python /tmp/setup.py
+    && (echo "1"; echo "1"; echo "1"; echo "1"; echo "1"; echo "1"; cat) | python /tmp/setup.py
 
 ADD /templates/*.toml /etc/confd/conf.d/
 ADD /templates/*.tmpl /etc/confd/templates/
