@@ -8,15 +8,15 @@ ADD VERSION .
 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-get update && \
-    apt-get install -y \
-    --no-install-recommends \
-    libpython2.7 \
-    python-setuptools \
-    collectd=$COLLECTD_VER \
-    curl \
-    ca-certificates && \
-    easy_install -U requests \
+RUN apt-get update \
+    && apt-get install -y \
+        --no-install-recommends \
+        libpython2.7 \
+        python-setuptools \
+        collectd=$COLLECTD_VER \
+        curl \
+        ca-certificates \
+    && easy_install -U requests \
     # Clean up packages
     && apt-get autoclean \
     && apt-get clean \
@@ -35,16 +35,16 @@ ADD https://raw.githubusercontent.com/awslabs/collectd-cloudwatch/master/src/set
 
 ADD /collectd-elasticsearch/elasticsearch_collectd.py /opt/collectd-plugins/
 ADD /scripts/* /scripts/
-RUN chmod +x /scripts/*
+ADD /templates/*.toml /etc/confd/conf.d/
+ADD /templates/*.tmpl /etc/confd/templates/
 
-RUN chmod +x /usr/local/bin/ec2-metadata \
+RUN chmod +x /scripts/* \
+    && chmod +x /usr/local/bin/ec2-metadata \
     && chmod +x /usr/local/bin/confd \
     && mv /scripts/ec2-metadata-value /usr/local/bin/ec2-metadata-value \
     && mkdir /etc/collectd/plugin-cfgs \
-    && (echo "1"; echo "1"; echo "1"; echo "1"; echo "1"; echo "1"; cat) | python /tmp/setup.py
+    && mkdir -p /opt/collectd-plugins/cloudwatch/config
 
-ADD /templates/*.toml /etc/confd/conf.d/
-ADD /templates/*.tmpl /etc/confd/templates/
 
 WORKDIR /scripts
 

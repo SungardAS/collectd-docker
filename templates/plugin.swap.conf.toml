@@ -1,6 +1,6 @@
 [template]
-src = "plugin.cpu.conf.tmpl"
-dest = "/etc/collectd/plugin-cfgs/cpu.conf"
+src = "plugin.swap.conf.tmpl"
+dest = "/etc/collectd/plugin-cfgs/swap.conf"
 keys = [
 ]
 

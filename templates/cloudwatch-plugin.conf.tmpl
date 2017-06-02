@@ -14,5 +14,13 @@
 whitelist_pass_through = "True"
 
 # The debug parameter enables verbose logging of published metrics
-debug = "True"
 
+{{- if getenv "AWS_CW_DEBUG" }}
+debug = "{{getenv "AWS_CW_DEBUG"}}"
+{{- else }}
+debug = "False"
+{{- end }}
+
+{{- if getenv "AWS_CW_PUSH_ASG" }}
+push_asg = "{{getenv "AWS_CW_PUSH_ASG"}}"
+{{- end }}
